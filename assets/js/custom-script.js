@@ -13,7 +13,7 @@ async function handleSearch() {
     try {
         // API di Open Library
         const response = await fetch(`https://openlibrary.org/subjects/${encodeURIComponent(query)}.json`);
-        https://covers.openlibrary.org/b/$key/$value-$size.jpg
+        
         if (!response.ok) throw new Error("Errore nella richiesta API");
 
         const data = await response.json();
