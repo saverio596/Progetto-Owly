@@ -1,0 +1,121 @@
+ :root {
+    --shadow: 0 1px 6px rgba(32,33,36,0.28);
+    --border: #dfe1e5;
+}
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #202124;
+}
+.container-box-search{
+    width: 800px;
+    max-width: 100%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border);
+}
+.container{
+    width: 800px;
+    max-width: 100%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+}
+.box-search{
+    padding: 5px 17px;
+    border-radius: 25px;
+    border: 1px solid var(--border);
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+.input-search{
+    width: 100%;
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    height: 44px;
+    padding-left: 20px;
+}
+.input-search::placeholder{
+    font-size: 14px;
+}
+ .box-search:hover {
+    box-shadow: var(--shadow);
+    border-color: transparent;
+}
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: #777;
+  width: 1rem;
+  height: 1rem;
+}
+.search-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 250px;
+    margin: 20px auto;
+}
+.book-card {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+}
+.book-title {
+    color: #1a0dab;
+    font-size: 20px;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+.book-title:hover {
+            text-decoration: underline;
+}
+.book-authors {
+    color: #006621;
+    font-size: 14px;
+    margin: 5px 0;
+}
+.description-container {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+            display: none; /* Nascosto di default */
+}
+.cover-book{
+    height: 130px;
+    margin-bottom: 5px;
+}
+.cover-book img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    width:90px;
+}
+.cover-book{
+    width:90px;
+}
+/******Media Query*******/
+@media only screen and (min-width:768px){
+    .book-card{
+        display: flex;
+        gap: 1.5rem;
+    }
+}
