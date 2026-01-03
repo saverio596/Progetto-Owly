@@ -1,3 +1,8 @@
+import './style.css';
+
+const baseUrl = process.env.API_BASE;  // https://openlibrary.org
+const coversBase = process.env.COVERS_BASE;
+
 const input = document.getElementById("categoryInput");
 const button = document.getElementById("searchBtn");
 const resultsContainer = document.getElementById("result");
@@ -12,7 +17,7 @@ async function handleSearch() {
 
     try {
         // API di Open Library
-        const response = await fetch(`https://openlibrary.org/subjects/${encodeURIComponent(query)}.json`);
+        const response = await fetch(`${baseUrl}/subjects/${encodeURIComponent(query)}.json`);
         
         if (!response.ok) throw new Error("Errore nella richiesta API");
 
@@ -26,7 +31,7 @@ async function handleSearch() {
             resultsContainer.innerHTML += data.works.map(work => `
                 <div class="book-card">
                     <div class="cover-book">
-                        <img src="https://covers.openlibrary.org/b/id/${work.cover_id}-M.jpg">
+                        <img src="${coversBase}/b/id/${work.cover_id}-M.jpg">
                     </div>    
                     <div class="info-book">
                         <h3 class="book-title" data-key="${work.key}">${work.title}</h3>
@@ -66,7 +71,7 @@ async function toggleDescription(bookKey, titleElement) {
 
             try {
                 // SECONDA API: Recupera i dettagli del libro usando la sua KEY
-                const response = await fetch(`https://openlibrary.org${bookKey}.json`);
+                const response = await fetch(`${baseUrl}${bookKey}.json`);
                 const details = await response.json();
 
                 // Gestione del testo della descrizione (a volte è un oggetto, a volte una stringa)
@@ -83,7 +88,6 @@ async function toggleDescription(bookKey, titleElement) {
 
  // Evento click sul bottone
 button.addEventListener("click", handleSearch);
-
 input.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") handleSearch();
+  if (e.key === "Enter") handleSearch();
 });
