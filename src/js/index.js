@@ -11,13 +11,14 @@ document.head.appendChild(link);
 
 // Inserisci il logo nell'header
 const header = document.querySelector('.header');
-if (header) {
+if (header && !header.querySelector('.app-logo')) { // solo se non c'è già
   const logoImg = document.createElement('img');
   logoImg.src = logoPath;
   logoImg.alt = 'Logo Libreria Interattiva';
   logoImg.className = 'app-logo';
   header.prepend(logoImg);
 }
+
 
 
 
