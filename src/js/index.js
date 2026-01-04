@@ -33,7 +33,7 @@ async function handleSearch() {
     const query = input.value.trim();
     if (!query) return;
 
-    resultsContainer.innerHTML = "<p>Caricamento...</p>";
+    resultsContainer.innerHTML = "<p>Caricamento..</p>";
 
     try {
         // API di Open Library
