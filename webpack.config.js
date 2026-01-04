@@ -1,5 +1,6 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/js/index.js',
@@ -12,16 +13,15 @@ module.exports = {
   devServer: { static: './dist', open: true },
   module: {
     rules: [
-      { test: /\.css$/i, 
-        use: ['style-loader', 'css-loader'] 
-      },
-      {
-      test: /\.(png|svg|jpg|jpeg|gif)$/i,   
-      type: 'asset/resource'
-      }
+      { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
+      { test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource' }
     ]
   },
   plugins: [
-    new Dotenv() // qui viene gestito dotenv
+    new Dotenv(), // gestisce le env variables
+    new HtmlWebpackPlugin({
+      template: './index.html',  // il tuo HTML nella root
+      filename: 'index.html'     // generato dentro dist/
+    })
   ]
 };
