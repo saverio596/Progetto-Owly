@@ -20,8 +20,12 @@ if (header) {
 }
 
 
+
 const baseUrl = process.env.API_BASE;  // https://openlibrary.org
 const coversBase = process.env.COVERS_BASE;
+
+console.log("API_BASE:", process.env.API_BASE);
+console.log("COVERS_BASE:", process.env.COVERS_BASE);
 
 const input = document.getElementById("categoryInput");
 const button = document.getElementById("searchBtn");
