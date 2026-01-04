@@ -18,7 +18,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new Dotenv(), // gestisce le env variables
+    new Dotenv({
+    systemvars: true // <--- legge anche le environment variables di Netlify
+  }),
     new HtmlWebpackPlugin({
       template: './index.html',  // il tuo HTML nella root
       filename: 'index.html'     // generato dentro dist/
