@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -10,7 +11,10 @@ module.exports = {
     clean: true
   },
   mode: 'development',
-  devServer: { static: './dist', open: true },
+  devServer: {
+    static: './dist',
+    open: true
+  },
   module: {
     rules: [
       { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
@@ -19,11 +23,17 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-    systemvars: true // <--- legge anche le environment variables di Netlify
-  }),
+      systemvars: true
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env.API_BASE': JSON.stringify(process.env.API_BASE),
+      'process.env.COVERS_BASE': JSON.stringify(process.env.COVERS_BASE)
+    }),
+
     new HtmlWebpackPlugin({
-      template: './index.html',  // il tuo HTML nella root
-      filename: 'index.html'     // generato dentro dist/
+      template: './index.html',
+      filename: 'index.html'
     })
   ]
 };
