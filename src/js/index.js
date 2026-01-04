@@ -1,4 +1,24 @@
-import './style.css';
+import '../css/style.css';
+
+// Import immagini
+import logoPath from '../img/logo-libreria-interattiva.png';
+import faviconPath from '../img/favicon.svg';
+
+const link = document.createElement('link');
+link.rel = 'icon';
+link.href = faviconPath;
+document.head.appendChild(link);
+
+// Inserisci il logo nell'header
+const header = document.querySelector('.header');
+if (header) {
+  const logoImg = document.createElement('img');
+  logoImg.src = logoPath;
+  logoImg.alt = 'Logo Libreria Interattiva';
+  logoImg.className = 'app-logo';
+  header.prepend(logoImg);
+}
+
 
 const baseUrl = process.env.API_BASE;  // https://openlibrary.org
 const coversBase = process.env.COVERS_BASE;
@@ -27,7 +47,7 @@ async function handleSearch() {
 
             
             // Mostra i libri
-            resultsContainer.innerHTML = `<p style="color:#70757a">Trovati circa: ${data.works.length} risultati</p>`;
+            resultsContainer.innerHTML = `<p style="color:#70757a;font-size:14px;">Trovati circa: ${data.works.length} risultati</p>`;
             resultsContainer.innerHTML += data.works.map(work => `
                 <div class="book-card">
                     <div class="cover-book">
