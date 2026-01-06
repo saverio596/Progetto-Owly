@@ -1,4 +1,4 @@
-import '../css/style.css';
+//import '../css/style.css';
 
 // Import immagini
 import logoPath from '../img/logo-libreria-interattiva.png';
